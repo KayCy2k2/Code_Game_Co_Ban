@@ -90,6 +90,10 @@ class Boss(pygame.sprite.Sprite):
             self.move_towards_player()
             self.check_player_distance()
         self.rect.clamp_ip(screen.get_rect())
+        
+        # Cập nhật trạng thái "alive" khi boss bị tiêu diệt
+        if not self.alive:
+            self.kill()  # Xóa boss khỏi nhóm sprites
 
     def move_towards_player(self):
         dx = self.player.rect.centerx - self.rect.centerx
