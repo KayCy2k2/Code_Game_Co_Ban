@@ -183,13 +183,6 @@ while running:
                 boss.alive = False  # Đánh dấu boss đã chết
                 break
 
-    if player.check_collision():
-        running = False
-        screen.fill((0, 0, 0))
-        draw_text(screen, "Game Over", 48, WIDTH // 2, HEIGHT // 2)
-        pygame.display.flip()
-        pygame.time.wait(2000)  # Đợi 2 giây trước khi đóng cửa sổ
-
     screen.fill((0, 0, 0))
     # Vẽ player, boss và đạn của boss
     for sprite in all_sprites:
@@ -201,6 +194,13 @@ while running:
     bullets.draw(screen)
     boss_bullets.draw(screen)
 
+    if player.check_collision():
+        running = False
+        screen.fill((0, 0, 0))
+        draw_text(screen, "Game Over", 48, WIDTH // 2, HEIGHT // 2)
+        pygame.display.flip()
+        pygame.time.wait(2000)  # Đợi 2 giây trước khi đóng cửa sổ
+        
     pygame.display.flip()
     clock.tick(90)
 
